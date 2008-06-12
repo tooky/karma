@@ -1,0 +1,9 @@
+%div[post]
+  %div.timestamp= post.created_at.strftime("%B %d, %Y %H:%M")
+  %h2
+    %a{ :href => "#{post.permalink}" }= post.title
+  %div.body= textile(post.body)
+  - if logged_in?
+    %div.controls
+      = link_to 'edit', url(:edit_post, post)
+      = link_to 'delete', url(:delete_post, post)

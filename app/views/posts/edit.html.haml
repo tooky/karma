@@ -1,0 +1,12 @@
+%h2
+  Edit
+  = link_to @post.title, @post.permalink
+
+= error_messages_for :post
+%div[@post]
+  - form_for(@post, :action => url(:post, @post) ) do
+    = partial :form_fields, :button_text => 'Edit'
+
+  = link_to 'Show', @post.permalink
+  |
+  = link_to 'Back', url(:posts)

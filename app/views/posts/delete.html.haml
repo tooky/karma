@@ -1,0 +1,13 @@
+= partial :post, :post => @post
+%div.overlay
+%div.delete-warning-wrapper  
+  %div.delete-warning
+    %p 
+      Are you sure you want to delete
+      = link_to @post.title, @post.permalink
+      ?
+    %p
+      - form_for(@post, :action => url(:post, @post), :method => :delete) do
+        = submit_button "Delete"
+        or
+        = link_to "cancel", @post.permalink    
