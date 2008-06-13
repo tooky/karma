@@ -3,7 +3,7 @@ class Application < Merb::Controller
   protected
   def authenticate
     authenticated = basic_authentication("Karma Trading Admin") do |username, password|
-      session[:logged_in] = Digest::SHA2.hexdigest(password) == Users[username]
+      session[:logged_in] = Digest::SHA1.hexdigest(password) == Users[username]
     end
     
     basic_authentication.request unless authenticated
