@@ -1,3 +1,4 @@
+ENV['GEM_PATH'] = '/home/stevetooke/.gems:/usr/lib/ruby/gems/1.8'
 require 'rubygems'
 Gem.clear_paths
 Gem.path.unshift(File.join(File.dirname(__FILE__), "gems"))
