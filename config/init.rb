@@ -59,7 +59,7 @@ require 'redcloth'
 # OR
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
 dependency 'activerecord',"= 2.0.2"
-dependency 'activesupport', "2.0.2"
+dependency 'activesupport', "= 2.0.2"
 # dependency 'merb-freezer'
 # dependency 'dm-timestamps'
 dependency 'merb_helpers'
