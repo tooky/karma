@@ -46,6 +46,7 @@ Gem.path.unshift(Merb.root / "gems")
 
 # ==== Dependencies
 require 'digest/sha1'
+require 'redcloth'
 # These are some examples of how you might specify dependencies.
 # Dependency loading is delayed to a later Merb app
 # boot stage, but it may be important when
@@ -57,12 +58,14 @@ require 'digest/sha1'
 # dependency "RedCloth", "> 3.0"
 # OR
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
+dependency 'activerecord',"= 2.0.2"
+dependency 'activesupport', "2.0.2"
 dependency 'merb-freezer'
-dependency 'dm-timestamps'
+# dependency 'dm-timestamps'
 dependency 'merb_helpers'
 dependency 'merb-assets'
 dependency 'merb-haml'
-dependency 'redcloth'
+# dependency 'RedCloth'
 dependency 'merb-builder'
 
 Merb::BootLoader.after_app_loads do
@@ -80,10 +83,10 @@ end
 # if you need a database.
 
 # Uncomment for DataMapper ORM
-use_orm :datamapper
+# use_orm :datamapper
 
 # Uncomment for ActiveRecord ORM
-# use_orm :activerecord
+use_orm :activerecord
 
 # Uncomment for Sequel ORM
 # use_orm :sequel

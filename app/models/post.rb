@@ -1,13 +1,6 @@
-class Post
-  include DataMapper::Resource
-  before :create, :create_slug
-
-  property :id, Integer, :serial => true
-  property :title, String, :length => 255, :nullable => false
-  property :body, Text, :nullable => false
-  property :slug, String, :length => 255, :index => true
-  property :created_at, DateTime
-  property :updated_at, DateTime
+class Post < ActiveRecord::Base
+  # include DataMapper::Resource
+  before_create :create_slug
   
   def permalink
     "/#{slug}"
@@ -15,8 +8,7 @@ class Post
   
   private
   def create_slug
-    new_slug = self.created_at.strftime("%Y/%m/%d") / escape(self.title.dup)
-    attribute_set(:slug, new_slug)
+    self.slug = self.created_at.strftime("%Y/%m/%d") / escape(self.title.dup)
   end
   
   def escape(s)

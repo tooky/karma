@@ -3,12 +3,12 @@ class Posts < Application
   before :authenticate, :exclude => [:index, :show] 
 
   def index
-    @posts = Post.all(:order => [:created_at.desc], :limit => 10)
+    @posts = Post.find(:all, :order => 'created_at DESC', :limit => 10)
     display @posts
   end
 
   def show
-    @post = Post.first(:slug => params[:id])
+    @post = Post.find_by_slug(params[:id])
     raise NotFound unless @post
     display @post
   end
@@ -21,7 +21,7 @@ class Posts < Application
 
   def edit
     only_provides :html
-    @post = Post.get(params[:id])
+    @post = Post.find(params[:id])
     raise NotFound unless @post
     render
   end
@@ -36,7 +36,7 @@ class Posts < Application
   end
 
   def update
-    @post = Post.get(params[:id])
+    @post = Post.find(params[:id])
     raise NotFound unless @post
     if @post.update_attributes(params[:post]) || !@post.dirty?
       redirect @post.permalink
@@ -47,13 +47,13 @@ class Posts < Application
   
   def delete
     only_provides :html
-    @post = Post.get(params[:id])
+    @post = Post.find(params[:id])
     raise NotFound unless @post
     render
   end
 
   def destroy
-    @post = Post.get(params[:id])
+    @post = Post.find(params[:id])
     raise NotFound unless @post
     if @post.destroy
       redirect url(:post)
