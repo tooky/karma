@@ -1,6 +1,5 @@
 ENV['GEM_PATH'] = '/home/stevetooke/.gems:/usr/lib/ruby/gems/1.8'
-require 'rubygems'
-require 'merb-core'
+require 'framework/merb-core/merb-core'
 
 Merb::Config.setup(:merb_root   => ".",
                    :environment => ENV['RACK_ENV'])
