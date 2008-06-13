@@ -3,7 +3,15 @@
   <head>
     <title>Karma Trading</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <%= css_include_tag 'master' %>
+    <%- require_css 'master' -%>
+    <%- require_css 'code_highlighter' -%>
+    <%- require_js 'code_highlighter' -%>
+    <%- require_js 'css' -%>
+    <%- require_js 'javascript' -%>
+    <%- require_js 'html' -%>
+    <%- require_js 'ruby' -%>
+    <%= include_required_css :bundle => 'karma' %>
+    <%= include_required_js :bundle => 'karma' %>
     <link type="application/atom+xml" title="ATOM" rel="alternate" href="<%= url(:feed) %>"/>
   </head>
   <body>
