@@ -62,7 +62,7 @@ dependency 'dm-timestamps'
 dependency 'merb_helpers'
 dependency 'merb-assets'
 dependency 'merb-haml'
-dependency 'RedCloth'
+dependency 'redcloth'
 dependency 'merb-builder'
 
 Merb::BootLoader.after_app_loads do
